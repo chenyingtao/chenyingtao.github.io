@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+
+        .bg {
+            background-color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box" v-cloak="">
+        <div style="display: inline-block;padding:0 20px;" v-for="(i,$index) in arr" @click="index = $index"
+            :class="index == $index?'bg':''">{{i.title}}</div>
+            <hehe :arr1="arr" :index2="index" ></hehe>
+    </div>
+    <template id="hehe">
+        <div>
+            <div v-for=" (i,$index) in data" v-show=" $index== index2">{{i.cont}}</div>
+        </div>
+    </template>
+
+</body>
+<script src="vue.js"></script>
+<script>
+    Vue.component('hehe', {
+        template:'#hehe',
+        props:['arr1','index2'],
+        data(){
+            return{
+                data:this.arr1,
+            }
+        }
+
+    })
+    new Vue({
+        el: "#box",
+        data: {
+            index: 0,
+            arr: [
+                { title: '标题一', cont: '内容一' },
+                { title: '标题二', cont: '内容二' },
+                { title: '标题三', cont: '内容三' }
+            ]
+        }
+    })
+</script>
+
+</html>
