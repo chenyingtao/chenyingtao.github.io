@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box">
+        父级{{box}}<button @click="box++">++</button>
+        <no1 :box="box"></no1>
+    </div>
+    <template id="no1">
+        <div>
+            子集：{{no1}}
+        </div>
+    </template>
+</body>
+<script src="vue.js"></script>
+<script>
+    Vue.component('no1', {
+        template: '#no1',
+        props: ['box'],
+        data() {
+            return {
+                no1: this.box
+            }
+        },
+        watch: {
+            box(a, b) {
+                this.no1 = a
+            }
+        }
+    })
+    new Vue({
+        el: '#box',
+        data: {
+            box: 0
+        }
+    })
+</script>
+
+</html>

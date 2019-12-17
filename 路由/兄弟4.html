@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box">
+        父级{{box}}
+        <no1 :box="box" @no1="box_bun"></no1>
+        <no2 :box="box" @no2="box_bun"></no2>
+    </div>
+    <template id="no1">
+        <div>
+            子集{{no1}}<button @click="but">++</button>
+        </div>
+    </template>
+    <template id="no2">
+        <div>
+            子集{{no2}}<button @click="but">++</button>
+        </div>
+    </template>
+</body>
+<script src="vue.js"></script>
+<script>
+    var bus = new Vue()
+    Vue.component('no1', {
+        template: '#no1',
+        props: ['box'],
+        data() {
+            return {
+                no1: this.box
+            }
+        },
+        mounted() {
+            bus.$on('no2', (a) => {
+                this.no1 = a
+                this.$emit('no1', this.no1)
+            })
+        },
+        methods: {
+            but() {
+                this.no1++
+                    this.$emit('no1', this.no1)
+            }
+        },
+        watch: {
+            box(a, b) {
+                this.no1 = a
+            }
+        }
+    })
+    Vue.component('no2', {
+        template: '#no2',
+        props: ['box'],
+        data() {
+            return {
+                no2: this.box
+            }
+        },
+        methods: {
+            but() {
+                this.no2++
+                    this.$emit('no2', this.no2)
+            }
+        },
+        watch: {
+            box(a, b) {
+                this.no2 = a
+            }
+        }
+
+    })
+    new Vue({
+        el: '#box',
+        data: {
+            box: 0
+        },
+        methods: {
+            box_bun(a) {
+                this.box = a
+            }
+        }
+    })
+</script>
+
+</html>
