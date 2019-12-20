@@ -1,0 +1,44 @@
+{
+  "id": "1573282",
+  "name": "99999999",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "1454628",
+      "name": "新浪微博",
+      "font_class": "xinlangweibo",
+      "unicode": "e645",
+      "unicode_decimal": 58949
+    },
+    {
+      "icon_id": "4103021",
+      "name": "脸书",
+      "font_class": "lianshu",
+      "unicode": "e6e7",
+      "unicode_decimal": 59111
+    },
+    {
+      "icon_id": "6033439",
+      "name": "推特",
+      "font_class": "tuite",
+      "unicode": "e615",
+      "unicode_decimal": 58901
+    },
+    {
+      "icon_id": "6458949",
+      "name": "微信",
+      "font_class": "weixin",
+      "unicode": "e644",
+      "unicode_decimal": 58948
+    },
+    {
+      "icon_id": "8928908",
+      "name": "instagram",
+      "font_class": "instagram",
+      "unicode": "e6e9",
+      "unicode_decimal": 59113
+    }
+  ]
+}
